@@ -1,3 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"> 
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<style> 
+body { 
+background-color: #f8f9fa; 
+} 
+.section-title { 
+margin-top: 60px; 
+margin-bottom: 30px; 
+} 
+footer { 
+margin-top: 60px; 
+padding: 20px 0; 
+background-color: #212529; 
+color: white; 
+} 
+</style> 
+</head> 
+<body> 
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
+<div class="container"> 
+<a class="navbar-brand" href="#">NOE Project</a> 
+</div> 
+</nav> 
+
+<div class="container"> 
+
+<h1 class="text-center mt-5">Nature of Enterprise project- By Adam O'Connor Kenny, TJ Ermitano, Abdul Lafiaji, Micheal Juna and Jack Kells</h1> 
+<p class="lead text-center">The effects of screentime on students</p> 
+
+ 
+<h2 class="section-title">Dataset Overview</h2> 
+<p> 
+The dataset shows that there is a positive corrilation between how many hours you spend daily on a phone, and how little hours of sleep you get. The graphs also show that the more sleep students got lead to a higher mental health score, with the same being true for the more screentime leading to a higher addiction score.
+</p> 
+
+<div class="row text-center"> 
+<div class="col-md-4"> 
+<div class="card shadow-sm"> 
+<div class="card-body"> 
+<h5>Mean Screentime </h5> 
+<p id="meanValue" class="display-6">--</p> 
+</div> 
+</div> 
+</div> 
+<div class="col-md-4"> 
+<div class="card shadow-sm"> 
+<div class="card-body"> 
+<h5>Median Screentime </h5> 
+<p id="medianValue" class="display-6">--</p> 
+</div> 
+</div> 
+</div> 
+<div class="col-md-4"> 
+<div class="card shadow-sm"> 
+<div class="card-body"> 
+<h5>Standard Deviation of Screentime</h5> 
+<p id="stdValue" class="display-6">--</p> 
+</div> 
+</div> 
+</div> 
+</div> 
+
+<h2 class="section-title">Data Visualisation</h2> 
+<div class="row"> 
+<div class="col-md-6"> 
+<canvas id="barChart"></canvas> 
+</div> 
+<div class="col-md-6"> 
+<canvas id="lineChart"></canvas> 
+</div> 
+</div> 
+
+
 <h2 class="section-title">Machine Learning Model</h2>
 <script>
 async function loadExcel() {

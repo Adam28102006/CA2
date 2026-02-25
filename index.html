@@ -1,0 +1,113 @@
+<h2 class="section-title">Machine Learning Model</h2>
+<script>
+async function loadExcel() {
+    try {
+        
+        const response = await fetch("Book.xlsx");
+        
+        const rawUrl = "https://raw.githubusercontent.com/Adam28102006/CA2/main/Book.xlsx";
+
+      
+        const response = await fetch(rawUrl);
+        if (!response.ok) throw new Error("Failed to fetch Excel file");
+
+        const data = await response.arrayBuffer();
+        const workbook = XLSX.read(data, { type: "array" });
+
+       
+        const sheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[sheetName];
+
+     
+        const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+        console.log("First 5 rows:", jsonData.slice(0,5));
+
+        
+        const screenColIndex = 4;
+        const sleepColIndex = 7;
+        
+
+        const screenData = [];
+        const sleepData = [];
+
+       
+        for (let i = 1; i < jsonData.length; i++)
+        
+        for (let i = 1; i < jsonData.length; i++)
+            const row = jsonData[i];
+            if (!row) continue; 
+            if (!row) continue;
+
+            const screenVal = row[screenColIndex];
+            const sleepVal = row[sleepColIndex];
+
+           
+            if (screenVal !== undefined && sleepVal !== undefined) {
+                const screenNum = Number(screenVal);
+                const sleepNum = Number(sleepVal);
+<h2 class="section-title">Machine Learning Model</h2>
+            }
+        }
+
+       
+        console.log("Screen Data:", screenData);
+        console.log("Sleep Data:", sleepData);
+
+        if (screenData.length === 0 || sleepData.length === 0) {
+            console.error("No valid data found in Excel columns.");
+            console.error("No valid data found in the specified columns!");
+            return;
+        }
+
+      
+        updateStatistics(screenData);
+
+      
+        createCharts(sleepData, screenData);
+        createScatterChart(sleepData, screenData);
+
+    } catch (err) {
+        console.error("Error loading Excel file:", err);
+    }
+}
+
+function mean(arr) {
+    return arr.reduce((a,b)=>a+b,0)/arr.length;
+}
+
+function mean(arr) { return arr.reduce((a,b)=>a+b,0)/arr.length; }
+function median(arr) {
+    const sorted = [...arr].sort((a,b)=>a-b);
+    const mid = Math.floor(sorted.length/2);
+    return arr.length % 2 !== 0 ? sorted[mid] : (sorted[mid-1]+sorted[mid])/2;
+}
+
+function stdDev(arr) {
+    const m = mean(arr);
+    return Math.sqrt(arr.reduce((sq,n)=>sq+Math.pow(n-m,2),0)/arr.length);
+}
+
+function updateStatistics(data) {
+    document.getElementById("meanValue").innerText = mean(data).toFixed(2);
+    document.getElementById("medianValue").innerText = median(data).toFixed(2);
+    document.getElementById("stdValue").innerText = stdDev(data).toFixed(2);
+}
+
+
+function createCharts(xData, yData) {
+function createScatterChart(xData, yData) {
+    new Chart(document.getElementById("barChart"), {
+        type: "scatter",
+        data: {
+<h2 class="section-title">Machine Learning Model</h2>
+    });
+}
+
+
+
+loadExcel();
+</script>
+</script>
+
+</body> 
+</html>
